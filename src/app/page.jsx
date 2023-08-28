@@ -41,7 +41,7 @@ const onNewScanResult = (decodedText, decodedResult) => {
         // salvar no banco o nome ra e semestre 
         async function saveAluno(name, ra, semestre) {
 
-          await axios.post('http://localhost:3003/cadastroAluno', {
+          await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/cadastroAluno`, {
             name , 
             ra, 
             semestre
