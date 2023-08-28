@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model aluno {
+  ra       String @id @db.VarChar(10)
+  nome     String @db.VarChar(255)
+  semestre String @db.VarChar(20)
+}
