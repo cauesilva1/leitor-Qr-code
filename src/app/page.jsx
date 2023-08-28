@@ -31,20 +31,24 @@ const onNewScanResult = (decodedText, decodedResult) => {
       console.log("Nome:", parsedInfo.name);
       console.log("RA:", parsedInfo.ra);
       console.log("Semestre:", parsedInfo.semestre);
+      
+      // Obter a data e hora atual do sistema
+      const currentTime = new Date();
 
-      saveAluno(parsedInfo.name, parsedInfo.ra, parsedInfo.semestre);
+      saveAluno(parsedInfo.name, parsedInfo.ra, parsedInfo.semestre, currentTime.toISOString());
 
     } else {
       console.log("Formato de entrada inválido.");
     }
 
         // salvar no banco o nome ra e semestre 
-        async function saveAluno(name, ra, semestre) {
+        async function saveAluno(name, ra, semestre, date) {
 
           await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/cadastroAluno`, {
             name , 
             ra, 
-            semestre
+            semestre,
+            date,
           })
         }
 
